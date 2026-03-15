@@ -7,5 +7,3 @@ class Circle(Figure):
         return 2 * math.pi * self.r
     def area(self):
         return math.pi * self.r ** 2
-    scxcxmscp[setcmlskc
-    wcmowocpwpc,]
