@@ -1,5 +1,5 @@
 import turtle
-import random
+
 
 class Petal:
     def __init__(self, color):
@@ -11,7 +11,7 @@ class Petal:
         t.setheading(angle)
         t.pendown()
         t.pencolor(self.color)
-        # Встановлюємо колір заливки пелюстки (червоний-іш)
+
         t.fillcolor(self.color)
 
         for _ in range(2):
@@ -62,12 +62,11 @@ class Flower:
         self.petal_color = petal_color
 
     def draw(self, t):
-        # Малюємо спочатку стебло та листя (зеленим)
+
         self.stem.draw(t, self.x, self.y)
         self.leaf.draw(t, self.x, self.y - 60, 30)
         self.leaf.draw(t, self.x, self.y - 100, 150)
 
-        # Потім малюємо 8 зафарбованих пелюсток (червоним) поверх стебла
         for i in range(8):
             p = Petal(self.petal_color)
             p.draw(t, self.x, self.y, i * 45)
@@ -75,18 +74,18 @@ class Flower:
 def main():
     screen = turtle.Screen()
     screen.setup(800, 600)
-    # Змінимо тло на світло-сіре, щоб червоний колір був контрастнішим
+
     screen.bgcolor("#f0f0f0")
     screen.title("Букет червоних квітів")
     t = turtle.Turtle()
     t.speed(0)
 
-    # Список відтінків червоного для різноманітності
+
     flower_colors = ['red', '#FF4500', '#DC143C']
     positions = [(-200, 0), (0, 50), (200, -20)]
 
     for i in range(len(positions)):
-        # Створюємо Flower з одним із червоних кольорів
+
         flower = Flower(positions[i][0], positions[i][1], flower_colors[i])
         flower.draw(t)
 
