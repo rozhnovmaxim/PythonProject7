@@ -1,4 +1,4 @@
-import math
+import
 
 class Rational:
     def __init__(self, n=0, d=1):
