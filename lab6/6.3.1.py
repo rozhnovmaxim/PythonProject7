@@ -1,6 +1,5 @@
 import math
 
-
 class Rational:
     def __init__(self, n, d=1):
         g = math.gcd(n, d)
@@ -12,6 +11,20 @@ class Rational:
             return str(self.n)
         return f"{self.n}/{self.d}"
 
+class RationalIterator:
+    def __init__(self, data):
+        self.items = sorted(data, key=lambda r: (r.d, r.n), reverse=True)
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index < len(self.items):
+            res = self.items[self.index]
+            self.index += 1
+            return res
+        raise StopIteration
 
 class RationalList:
     def __init__(self):
@@ -29,9 +42,7 @@ class RationalList:
         return self
 
     def __iter__(self):
-        sorted_data = sorted(self.data, key=lambda r: (r.d, r.n), reverse=True)
-        return iter(sorted_data)
-
+        return RationalIterator(self.data)
 
 def main():
     num = input("Виберіть номер файлу (01, 02 або 03): ")
@@ -63,6 +74,5 @@ def main():
 
     except FileNotFoundError:
         print("Файл не знайдено!")
-
 
 main()
